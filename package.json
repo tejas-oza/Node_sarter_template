@@ -1,0 +1,23 @@
+{
+  "name": "node_starter_template",
+  "version": "1.0.0",
+  "description": "A node.js starter template for the backend.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "Mongodb",
+    "Server",
+    "Api",
+    "Backend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
