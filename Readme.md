@@ -87,8 +87,46 @@ This folder contains public assets such as images, videos, and frontend-related 
 
 `.env.sample` -> A sample of .env file for reference.
 
-### Installation and Usages ->
-
 ---
 
-Follow the below steps to use this tempalte:
+### Setting up the project ->
+
+1. **Clone the Repository ->**
+
+Download the template from GitHub and open it in any text editor of your choice.
+
+2. **Navigate to the Project Directory ->**
+
+Open the terminal and check your current working directory using:
+
+```
+pwd
+```
+
+If you are not inside the project root, navigate to it using:
+
+```
+cd your_rootFolderName
+```
+
+3. **Install Dependencies ->**
+   Run the following command to install all dependencies:
+
+```
+npm install
+```
+
+4. **Set Up Environment Variables ->**
+   Inside the root directory, create `.env` file and add the necessary environment variavles.
+
+Example: -
+
+```
+PORT=<your port number>
+DB_URI=<your database URI>
+DB_NAME=<your database name>
+ACCESS_TOKEN=<your access token>
+REFRESH_TOKEN=<your refresh token>
+```
+
+Feel free to add any additional environment variables based on your project needs.
