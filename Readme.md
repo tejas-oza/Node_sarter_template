@@ -171,7 +171,7 @@ npm install
 
 4. **Set Up Environment Variables ->**
 
-Inside the root directory, create `.env` file and add the necessary environment variavles.
+- Inside the root directory, create `.env` file and add the necessary environment variavles.
 
 Example: -
 
@@ -181,7 +181,7 @@ DB_URI=<your database URI>
 CORS_ORIGIN=<your cors origin>
 ```
 
-Feel free to add any additional environment variables based on your project needs.
+- Feel free to add any additional environment variables based on your project needs.
 
 5. **Set Up Environment Variables for your database(here MongoDB) ->**
 
@@ -193,7 +193,7 @@ DB_URI=<your_db_connection_string>
 
 6. **Configure Database Connection ->**
 
-This project uses MongoDB as the database. But you can use any database you want and make changes. The connection logic is handled inside the db/index.js file.
+   This project uses MongoDB as the database. But you can use any database you want and make changes. The connection logic is handled inside the db/index.js file.
 
 - The `connectDB` function establishes a connection with MongoDB using `mongoose.connect()`.
 - It fetches the `MongoDB connection URI` from the `.env` file and uses the default database name stored in constants.js.
@@ -201,29 +201,102 @@ This project uses MongoDB as the database. But you can use any database you want
 
 7. **Start the Server ->**
 
-Once the database connection is successful, the server will start listening on the specified `PORT`.
-This is handled inside `index.js`:
+- Once the database connection is successful, the server will start listening on the specified `PORT`.
+  This is handled inside `index.js`:
 
-```
-connectDB()
-.then(() => {
-app.listen(PORT, () => {
-console.log(`Server is running on port ${PORT}`);
-});
-})
-.catch((err) => {
-console.log(`MongoDB connection error`, err);
-});
-```
+  ```
+  connectDB()
+  .then(() => {
+  app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+  });
+  })
+  .catch((err) => {
+  console.log(`MongoDB connection error`, err);
+  });
+  ```
 
-If the connecion fails, an error message will be displayed.
+- If the connecion fails, an error message will be displayed.
 
-8. **Run the project**
+8. **Run the project ->**
 
-Now inside terminal go the root direcory and check the current directory. If you are in root the run the following command:
+- Now inside terminal go the root direcory and check the current directory. If you are in root the run the following command:
 
-```
-npm run dev
-```
+  ```
+  npm run dev
+  ```
 
 This will start the server and connect to DB.
+
+9. **Create the Controllers ->**
+
+- Inside the controllers folder there is an file called `example.controllers.js`.
+- This file show you an example of how can you create controllers/business logic for different `API routes`.
+
+  ```
+  import { ApiResponse } from "../utils/ApiResponse.js";
+  import { asyncHandler } from "../utils/asyncHandler.js";
+
+   const exampleControllerLogic = asyncHandler(async (req, res) => {
+     return res
+      .status(200)
+      .json(new ApiResponse(200, "Ok", "Example for how to use it."));
+   });
+
+   export { exampleControllerLogic };
+
+  ```
+
+- Similarly you can create your own controllers.
+
+  Example:-
+
+  ```
+  user.controllers.js
+  products.controllers.js
+  ```
+
+  and many more.
+
+10. **Create the Routes ->**
+
+- Inside the Routes folder there is an file called `example.routes.js`.
+- This file show you an example of how you can create routes/api endpoints and connect them with there respective controller function.
+
+  ```
+  import { Router } from "express";
+  import { exampleControllerLogic } from "../controllers/ example.controllers.js";
+
+  const router = Router();
+
+  router.route("/").get(exampleControllerLogic);
+
+  export default router;
+
+  ```
+
+- Similarly you can create your own routes.
+
+  Example:-
+
+       user.routes.js
+       products.routes.js
+
+  and many more.
+
+10. **Register the Route in app.js ->**
+
+- To use the newly created route, import and register it inside app.js:
+- Inside the `src` folder inside `app.js` file you will see the example.
+
+  ```
+  // import routes
+  import exampleRouter from "./routes/example.routes.js";
+
+  // routes
+  app.use("/api/v1/exampleroute", exampleRouter);
+  ```
+
+- Now, the API is accessible at:
+
+  `/api/v1/exampleroute` -> GET request

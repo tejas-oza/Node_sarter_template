@@ -19,4 +19,10 @@ app.use(
 );
 app.use(express.static("public"));
 
+// import routes
+import exampleRouter from "./routes/example.routes.js";
+
+// routes
+app.use("/api/v1/exampleroute", exampleRouter);
+
 export { app };
