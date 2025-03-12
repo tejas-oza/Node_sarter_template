@@ -152,17 +152,13 @@ This folder contains public assets such as images, videos, and frontend-related 
    Open the terminal and check your current working directory using:
 
 ```
-
 pwd
-
 ```
 
 If you are not inside the project root, navigate to it using:
 
 ```
-
 cd your_rootFolderName
-
 ```
 
 3. **Install Dependencies ->**
@@ -170,9 +166,7 @@ cd your_rootFolderName
 Run the following command to install all dependencies:
 
 ```
-
 npm install
-
 ```
 
 4. **Set Up Environment Variables ->**
@@ -182,11 +176,9 @@ Inside the root directory, create `.env` file and add the necessary environment 
 Example: -
 
 ```
-
 PORT=<your port number>
 DB_URI=<your database URI>
 CORS_ORIGIN=<your cors origin>
-
 ```
 
 Feel free to add any additional environment variables based on your project needs.
@@ -196,9 +188,7 @@ Feel free to add any additional environment variables based on your project need
 Inside your `.env` file, add the following variable:
 
 ```
-
 DB_URI=<your_db_connection_string>
-
 ```
 
 6. **Configure Database Connection ->**
@@ -215,7 +205,6 @@ Once the database connection is successful, the server will start listening on t
 This is handled inside `index.js`:
 
 ```
-
 connectDB()
 .then(() => {
 app.listen(PORT, () => {
@@ -225,7 +214,6 @@ console.log(`Server is running on port ${PORT}`);
 .catch((err) => {
 console.log(`MongoDB connection error`, err);
 });
-
 ```
 
 If the connecion fails, an error message will be displayed.
@@ -235,13 +223,7 @@ If the connecion fails, an error message will be displayed.
 Now inside terminal go the root direcory and check the current directory. If you are in root the run the following command:
 
 ```
-
 npm run dev
-
 ```
 
 This will start the server and connect to DB.
-
-```
-
-```
